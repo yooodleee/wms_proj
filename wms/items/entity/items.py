@@ -11,11 +11,11 @@ class Item(models.Model):
     barcode = models.CharField(max_length=64, blank=True, null=True, db_index=True)
 
     # suppliers 도메인 생성 이후 활성화
-    # supplier = models.ForeignKey(
-    #     'suppliers.Supplier',
-    #     on_delete=models.SET_NULL,
-    #     null=True, blank=True, related_name='items'
-    # )
+    supplier = models.ForeignKey(
+        'suppliers.Supplier',
+        on_delete=models.SET_NULL,
+        null=True, blank=True, related_name='items'
+    )
 
     attributes = models.JSONField(default=dict, blank=True) # 색상, 소재 등
     is_active = models.BooleanField(default=True)
